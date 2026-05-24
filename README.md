@@ -1,47 +1,107 @@
-# AIDEOM-VN — AI-Driven Decision Optimization Model for Vietnam
+# 🇻🇳 AIDEOM-VN
+**AI-Driven Decision Optimization Model for Vietnam**
 
-Web app giải 12 bài toán mô hình ra quyết định phát triển kinh tế Việt Nam.
+Hệ thống 12 bài toán mô hình ra quyết định phát triển kinh tế Việt Nam trong kỷ nguyên AI.
 
-## Cài đặt & chạy
+---
 
+## ⚡ Cài đặt nhanh
+
+### Yêu cầu
+- Python 3.10 hoặc 3.11
+- Terminal (macOS/Linux) hoặc PowerShell (Windows)
+
+### Các bước
+
+**1. Tải về**
 ```bash
-# 1. Tạo môi trường ảo
-python -m venv venv
+git clone https://github.com/tên-của-bạn/aideom-vn.git
+cd aideom_vn
+```
 
-# 2. Kích hoạt (Windows)
-venv\Scripts\activate
-# macOS/Linux
+**2. Tạo môi trường ảo**
+```bash
+# macOS / Linux
+python3 -m venv venv
 source venv/bin/activate
 
-# 3. Cài thư viện
-pip install -r requirements.txt
+# Windows
+python -m venv venv
+venv\Scripts\Activate.ps1
+```
 
-# 4. Chạy app
+**3. Cài thư viện**
+```bash
+pip install -r requirements.txt
+```
+
+**4. Chạy app**
+```bash
 streamlit run app.py
 ```
 
-Trình duyệt tự mở http://localhost:8501
+Trình duyệt tự mở tại `http://localhost:8501` 🎉
 
-## Cấu trúc
+---
+
+## 🤖 Dùng AI Analyst (Groq)
+
+1. Lấy API key **miễn phí** tại [console.groq.com](https://console.groq.com)
+2. Đăng nhập → Create API Key → Copy key
+3. Dán vào ô **Groq API Key** ở sidebar trái
+4. Vào từng bài toán → nhấn **✨ Phân tích kết quả** hoặc **💬 Câu hỏi thảo luận**
+
+---
+
+## 📁 Cấu trúc thư mục
 
 ```
 aideom_vn/
-├── app.py                    # Trang chủ + sidebar
-├── pages/
-│   ├── 01_Cobb_Douglas.py    # Bài 1
-│   ├── 02_LP_Ngan_Sach.py    # Bài 2
-│   └── ...                   # Bài 3-12
-├── data/
+├── app.py                  # Trang chủ
+├── pages/                  # 12 bài toán
+│   ├── 01_Cobb_Douglas.py
+│   ├── 02_LP_Ngan_Sach.py
+│   └── ...
+├── utils/
+│   ├── ai_analyst.py       # AI phân tích (Groq)
+│   └── data_loader.py      # Đọc dữ liệu
+├── data/                   # File CSV dữ liệu Việt Nam
 │   ├── vietnam_macro_2020_2025.csv
 │   ├── vietnam_sectors_2024.csv
 │   └── vietnam_regions_2024.csv
-├── utils/
-│   ├── data_loader.py
-│   └── ai_analyst.py
-└── requirements.txt
+├── requirements.txt
+└── README.md
 ```
 
-## AI Analyst
+---
 
-Nhập Anthropic API key vào sidebar để kích hoạt tính năng phân tích kết quả tự động.
-Lấy key tại: https://console.anthropic.com
+## 📦 Thư viện chính
+
+| Thư viện | Dùng cho |
+|----------|----------|
+| streamlit | Dashboard |
+| numpy, pandas | Tính toán |
+| plotly | Biểu đồ |
+| scipy | Tối ưu hóa |
+| pulp | Linear Programming |
+| pymoo | NSGA-II Pareto |
+| cvxpy | Convex optimization |
+| groq | AI Analyst |
+
+---
+
+## ❓ Lỗi thường gặp
+
+**`command not found: streamlit`**
+```bash
+source venv/bin/activate  # kích hoạt môi trường ảo trước
+streamlit run app.py
+```
+
+**`ModuleNotFoundError`**
+```bash
+pip install -r requirements.txt
+```
+
+**AI không hoạt động**
+→ Kiểm tra đã nhập Groq API key ở sidebar chưa (key bắt đầu bằng `gsk_...`)
