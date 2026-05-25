@@ -81,11 +81,12 @@ def step_env(state, action):
     return new_state, reward
 
 # ── Huấn luyện Q-learning ─────────────────────────────────────────────────────
+T = 10  # Số bước mỗi episode — khai báo ở module-level để dùng được ở mọi block
+
 if st.button("🚀 Huấn luyện Q-learning", type="primary"):
     np.random.seed(42)
     Q = np.zeros((81, 5))
     rewards_history = []
-    T = 10
 
     progress = st.progress(0)
     status_text = st.empty()
