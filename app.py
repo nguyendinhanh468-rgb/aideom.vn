@@ -234,6 +234,14 @@ st.markdown("""
 [data-testid="stSidebar"] {
     background:rgba(15,30,55,0.97) !important;
     border-right:1px solid rgba(255,255,255,0.06) !important;
+    display: block !important;
+    visibility: visible !important;
+    min-width: 260px !important;
+}
+/* Nút mở/đóng sidebar luôn hiện */
+[data-testid="collapsedControl"] {
+    display: block !important;
+    visibility: visible !important;
 }
 .sb-logo { text-align:center; padding:24px 0 16px; border-bottom:1px solid rgba(255,255,255,0.06); margin-bottom:16px; }
 .sb-logo-text { font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:800; color:#f1f5f9; letter-spacing:1px; }
